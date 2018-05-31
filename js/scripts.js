@@ -1,10 +1,25 @@
+function add(question1, question2, question3, question4, question5) {
+  return question1 + question2 + question3 + question4 + question5;
+};
+
 $(document).ready(function(event) {
   $("form#quizquestions").submit(function(event) {
-  var question1 = $("#question1choice1").val();
-  var question2 = $(".question2").val();
-  var question3 = $(".question3").val();
-  var question4 = $(".question4").val();
-  var question5 = $(".question5").val();
+  var question1 = parseInt($("input:radio[name=question1]:checked").val());
+  var question2 = parseInt($("input:radio[name=question2]:checked").val());
+  var question3 = parseInt($("input:radio[name=question3]:checked").val());
+  var question4 = parseInt($("input:radio[name=question4]:checked").val());
+  var question5 = parseInt($("input:radio[name=question5]:checked").val());
+
+  if (add(question1, question2, question3, question4, question5) >= 9) {
+    $('.result').text("Margot Tenenbaum");
+  } else if (add(question1, question2, question3, question4, question5) >= 6 ) {
+    $('.result').text("Klaus Daimler");
+  } else if (add(question1, question2, question3, question4, question5) === 5) {
+    $('.result').text("Mr. Fox");
+  } else {
+    $('.result').text("Answer all the questions");;
+  }
+
   event.preventDefault();
   });
 });
